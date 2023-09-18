@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_16_153717) do
 
   create_table "comments", force: :cascade do |t|
     t.text "text"
-    t.bigint "author_id", null: false
+    t.bigint "user_id", null: false
     t.bigint "posts_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -25,7 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_16_153717) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.bigint "author_id", null: false
+    t.bigint "user_id", null: false
     t.bigint "posts_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
