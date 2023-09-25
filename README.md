@@ -122,6 +122,9 @@ Then run:
 ```
 bundle install
 ```
+```
+gem bundle install
+```
 
 ```
 rails db:drop
