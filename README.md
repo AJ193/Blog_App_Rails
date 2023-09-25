@@ -123,6 +123,19 @@ Then run:
 bundle install
 ```
 
+```
+rails db:drop
+```
+```
+rails db:create
+```
+```
+rails db:migrate
+```
+```
+rails s
+```
+
 
 ### Run tests
 
