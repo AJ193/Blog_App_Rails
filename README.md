@@ -162,6 +162,13 @@ You can deploy this project using:
 - Twitter: [@AJ](https://twitter.com/GhulamShabbir59)
 - LinkedIn: [@AJ](https://www.linkedin.com/in/ghulam-shabbir-225264247/)
 
+👤 **Kamran Asif**
+
+- GitHub: [@githubhandle](https://github.com/kamranasif506)
+- Twitter: [@twitterhandle](https://twitter.com/kamiasif55)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/kamran-asif)
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
