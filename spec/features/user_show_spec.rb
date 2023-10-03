@@ -1,74 +1,36 @@
 require 'rails_helper'
 
-RSpec.describe 'user#Show', type: :feature do
-  describe 'User' do
-    before(:each) do
-      @user1 = User.new(name: 'Amy', photo: 'R.png', bio: 'bio', post_counter: 0, email: 'amy@gmail.com',
-                        password: 'password')
-      @user1.skip_confirmation!
-      @user1.save!
-      @user2 = User.new(name: 'amy', bio: 'bio',
-                        photo: 'Tom.png',
-                        email: 'amy@gmail.com', password: 'password')
-      @user1.skip_confirmation!
-      @user1.save!
-      @user3 = User.new(name: 'Jerry', bio: 'bio',
-                        photo: 'R.png',
-                        email: 'jerry@gmail.com', password: 'password')
-      @user1.skip_confirmation!
-      @user1.save!
+RSpec.feature 'User show page', type: :feature do
+  let!(:user) { FactoryBot.create(:user, name: 'TestUser', bio: 'This is a test bio.') }
 
-      visit root_path
-      fill_in 'Email', with: 'amy@gmail.com'
-      fill_in 'Password', with: 'password'
-      click_button 'Log in'
-      @post1 = Post.create(title: 'First Post', text: 'This is my first post', comments_counter: 0, likes_counter: 0,
-                           author: @user1)
-      @post2 = Post.create(title: 'Second Post', text: 'This is my second post', comments_counter: 0, likes_counter: 0,
-                           author: @user1)
-      @post3 = Post.create(title: 'Third Post', text: 'This is my third post', comments_counter: 0, likes_counter: 0,
-                           author: @user1)
-      @post4 = Post.create(title: 'Fourth Post', text: 'This is my fourth post', comments_counter: 0, likes_counter: 0,
-                           author: @user1)
-      visit user_path(@user1.id)
-    end
-    it "show user's profile picture" do
-      all('R.png').each do |i|
-        expect(i[:src]).to eq('R.png')
-      end
-    end
+  before do
+    FactoryBot.create_list(:post, 5, author: user)
+    visit user_path(user)
+  end
 
-    it "show user's name" do
-      expect(page).to have_content 'Amy'
+  scenario('Check if users profile picture is visible') { expect(page).to have_css('img') }
+  scenario 'Check the number of posts the user has written.' do
+    expect(page).to have_content("Number Of posts #{user.posts_counter}")
+  end
+  scenario('Check if users username is visible') { expect(page).to have_content(user.name) }
+  scenario('Check if users bio is visible') { expect(page).to have_content(user.bio) }
+  scenario 'Check if the first 3 posts are visible' do
+    user.posts.first(3).each_with_index do |post, index|
+      expect(page).to have_content("Post ##{index + 1}")
+      expect(page).to have_content(post.text.truncate(50))
     end
+  end
+  scenario 'Check if the "View All Posts" button is visible' do
+    expect(page).to have_link('View All Posts', href: user_posts_path(user))
+  end
 
-    it 'show number of posts per user' do
-      user = User.first
-      expect(page).to have_content(user.post_counter)
-    end
+  scenario 'User clicks on a user post and is redirected to its show page' do
+    first('h4 a').click
+    expect(page).to have_current_path(user_post_path(user, user.posts.first))
+  end
 
-    it "show user's bio." do
-      expect(page).to have_content('bio')
-    end
-
-    it "show user's first 3 posts." do
-      expect(page).to have_content 'This is my fourth post'
-      expect(page).to have_content 'This is my third post'
-      expect(page).to have_content 'This is my second post'
-    end
-
-    it "show button that lets me view all of a user's posts." do
-      expect(page).to have_link('See all posts')
-    end
-
-    it "click post and redirect to that post's show page." do
-      click_link 'See all posts'
-      expect(page).to have_current_path user_posts_path(@user1)
-    end
-
-    it "click see all posts and redirects to user's post's index page." do
-      click_link 'See all posts'
-      expect(page).to have_current_path user_posts_path(@user1)
-    end
+  scenario 'User clicks on "View All Posts" and is redirected to the user post index page' do
+    click_on 'View All Posts'
+    expect(page).to have_current_path(user_posts_path(user))
   end
 end
