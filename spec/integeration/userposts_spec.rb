@@ -22,8 +22,8 @@ RSpec.feature 'User post index page', type: :feature do
       expect(page).to have_content(post.title)
       expect(page).to have_content(post.text.truncate(50))
       expect(page).to have_content(post.comments.first.body) if post.comments.any?
-      expect(page).to have_content("Comments #{post.comments.count}")
-      expect(page).to have_content("Likes #{post.likes.count}") # Truncate post body for visibility
+      expect(page).to have_content("Comments: #{post.comments.count}")
+      expect(page).to have_content("Likes: #{post.likes.count}") # Truncate post body for visibility
     end
 
     # Check if the first comments on a post are visible
@@ -34,7 +34,7 @@ RSpec.feature 'User post index page', type: :feature do
     expect(page).to have_css('.pagination')
 
     # Click on a post and check if it redirects to the post's show page
-    first('h4 a').click
+    first('ul a').click
     expect(page).to have_current_path(user_post_path(user, user.posts.first))
   end
 end

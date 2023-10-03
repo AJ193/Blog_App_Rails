@@ -148,3 +148,7 @@ a {
 .commets-container {
   padding: 10px;
 }
+
+.pagination {
+  display: none;
+}
