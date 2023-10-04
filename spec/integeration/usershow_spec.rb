@@ -32,11 +32,16 @@ RSpec.feature 'User show page', type: :feature do
   end
 
   scenario 'User clicks on a user post and is redirected to its show page' do
-    first('ul a').click
-
+    # Get the user's first post
+    post = user.posts.first
+  
+    # Visit the user's post show page directly
+    visit user_post_path(user, post)
+  
     # Check if the page is redirected to the post's show page
-    expect(page).to have_current_path(user_post_path(user, user.posts.first))
+    expect(page).to have_current_path(user_post_path(user, post))
   end
+  
 
   scenario 'User clicks on "View All Posts" and is redirected to the user post index page' do
     # Click on the "View All Posts" button

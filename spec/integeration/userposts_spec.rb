@@ -35,6 +35,6 @@ RSpec.feature 'User post index page', type: :feature do
 
     # Click on a post and check if it redirects to the post's show page
     first('ul a').click
-    expect(page).to have_current_path(user_post_path(user_id: user.id, id: user.posts.first.id))
+    expect(page).to have_current_path(user_post_path(user, user.posts.first))
   end
 end
