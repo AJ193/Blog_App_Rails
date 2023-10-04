@@ -33,13 +33,17 @@ RSpec.feature 'User show page', type: :feature do
 
   scenario 'User clicks on a user post and is redirected to its show page' do
     # Get the user's first post
-    post = user.posts.first
+    post_data = user.posts.first
 
-    # Visit the user's post show page directly
-    visit user_post_path(user, post)
+    first('ul a').click
 
     # Check if the page is redirected to the post's show page
-    expect(page).to have_current_path(user_post_path(user, post))
+    # expect(page).to have_current_path(user_post_path(user, post))
+    expect(page).to have_current_path(user_post_path(user_id: post_data.author_id, id: post_data.id))
+  end
+
+  scenario 'Check the number of posts the user has written.' do
+    expect(page).to have_content("Number of posts: #{user.post_counter}")
   end
 
   scenario 'User clicks on "View All Posts" and is redirected to the user post index page' do

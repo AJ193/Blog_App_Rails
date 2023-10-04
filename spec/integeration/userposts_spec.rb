@@ -6,11 +6,10 @@ RSpec.feature 'User post index page', type: :feature do
   before do
     # Create some posts, comments, and likes for the user
     FactoryBot.create_list(:post, 5, author: user)
+    visit user_posts_path(user)
   end
 
   scenario 'User sees posts and post details' do
-    visit user_posts_path(user)
-
     # Check if user profile picture is visible
     expect(page).to have_css('img')
 
@@ -36,5 +35,8 @@ RSpec.feature 'User post index page', type: :feature do
     # Click on a post and check if it redirects to the post's show page
     first('ul a').click
     expect(page).to have_current_path(user_post_path(user, user.posts.first))
+  end
+  scenario 'Check the number of posts the user has written.' do
+    expect(page).to have_content("Number of posts: #{user.post_counter}")
   end
 end
