@@ -1,6 +1,11 @@
 class CommentsController < ApplicationController
+<<<<<<< HEAD
   before_action :authenticate_user!, only: %i[create destroy]
   load_and_authorize_resource
+=======
+  before_action :authenticate_user!
+
+>>>>>>> 67a78bbfcbc12753475b18de3f640ed9a9164892
   def new
     @comment = Comment.new
   end

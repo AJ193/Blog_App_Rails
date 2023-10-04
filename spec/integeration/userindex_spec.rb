@@ -28,15 +28,15 @@ RSpec.feature 'User index page', type: :feature do
     expect(page).to have_css('img')
 
     # Check if the number of posts each user has written is visible
-    expect(page).to have_content("Number Of posts #{user1.posts_counter}")
-    expect(page).to have_content("Number Of posts #{user2.posts_counter}")
-    expect(page).to have_content("Number Of posts #{user3.posts_counter}")
-    expect(page).to have_content("Number Of posts #{user4.posts_counter}")
+    expect(page).to have_content("Number of posts: #{user1.post_counter}")
+    expect(page).to have_content("Number of posts: #{user2.post_counter}")
+    expect(page).to have_content("Number of posts: #{user3.post_counter}")
+    expect(page).to have_content("Number of posts: #{user4.post_counter}")
   end
 
   scenario 'User clicks on a user and is redirected to their show page' do
     # Click on a user's link
-    first('h2 a').click
+    first('ul a').click
 
     # Check if the page is redirected to the user's show page
     expect(page).to have_current_path(user_path(user1))

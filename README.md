@@ -168,7 +168,10 @@ You can deploy this project using:
 - Twitter: [@twitterhandle](https://twitter.com/kamiasif55)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/kamran-asif)
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 67a78bbfcbc12753475b18de3f640ed9a9164892
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 

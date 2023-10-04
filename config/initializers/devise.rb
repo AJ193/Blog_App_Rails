@@ -14,7 +14,11 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
+<<<<<<< HEAD
   # config.secret_key = '5e4e74ecce51f9d929b0b91d558f312cfa22e4a88ba67680b44695850d05421e640ce1413a3b44f8e2ec858a3898e7ca818b34ea1dc7f4a9fd766267f16bfbd2'
+=======
+  # config.secret_key = '5f9718ed08a20e29c946344b2155db84b5ee5403a24ce432e5b67533d7bbf947ec8d7127f08b0a1a0f6caa3a0f421a53baf62d6e59075742ecb58da7090cbf24'
+>>>>>>> 67a78bbfcbc12753475b18de3f640ed9a9164892
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -126,7 +130,11 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
+<<<<<<< HEAD
   # config.pepper = 'd3286956b4b9aebcf949c924490567485160a4a6da9056e1224ace9192cd4d0dc827024f3c015bd3cfd065a15c8be624f5a5ae5a989190fa723a5726081eee79'
+=======
+  # config.pepper = '7b603759be211bc6342192413cfe184c893ad4db0e043ff4f64cd714112ae155b89dd0e5e207cceec9f81fc2dcc4c44269eedec0b7f4de65d5be1a6733d9350d'
+>>>>>>> 67a78bbfcbc12753475b18de3f640ed9a9164892
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -256,14 +264,22 @@ Devise.setup do |config|
 
   # ==> Navigation configuration
   # Lists the formats that should be treated as navigational. Formats like
+<<<<<<< HEAD
   # :html, should redirect to the sign in page when the user does not have
+=======
+  # :html should redirect to the sign in page when the user does not have
+>>>>>>> 67a78bbfcbc12753475b18de3f640ed9a9164892
   # access, but formats like :xml or :json, should return 401.
   #
   # If you have any extra navigational formats, like :iphone or :mobile, you
   # should add them to the navigational formats lists.
   #
   # The "*/*" below is required to match Internet Explorer requests.
+<<<<<<< HEAD
   # config.navigational_formats = ['*/*', :html]
+=======
+  # config.navigational_formats = ['*/*', :html, :turbo_stream]
+>>>>>>> 67a78bbfcbc12753475b18de3f640ed9a9164892
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
@@ -296,12 +312,23 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
+<<<<<<< HEAD
   # ==> Turbolinks configuration
   # If your app is using Turbolinks, Turbolinks::Controller needs to be included to make redirection work correctly:
   #
   # ActiveSupport.on_load(:devise_failure_app) do
   #   include Turbolinks::Controller
   # end
+=======
+  # ==> Hotwire/Turbo configuration
+  # When using Devise with Hotwire/Turbo, the http status for error responses
+  # and some redirects must match the following. The default in Devise for existing
+  # apps is `200 OK` and `302 Found respectively`, but new apps are generated with
+  # these new defaults that match Hotwire/Turbo behavior.
+  # Note: These might become the new default in future versions of Devise.
+  config.responder.error_status = :unprocessable_entity
+  config.responder.redirect_status = :see_other
+>>>>>>> 67a78bbfcbc12753475b18de3f640ed9a9164892
 
   # ==> Configuration for :registerable
 
