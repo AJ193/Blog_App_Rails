@@ -171,7 +171,6 @@ a {
   padding: 10px;
 }
 
-<<<<<<< HEAD
 nav {
   width: 100%;
   top: 0;
@@ -231,8 +230,20 @@ nav {
   line-height: 1.2;
   color: #191765;
   margin: 10px;
-=======
-.pagination {
-  display: none;
->>>>>>> 67a78bbfcbc12753475b18de3f640ed9a9164892
+}
+
+.field {
+  padding: 10px;
+  font-size: 18px;
+  display: grid;
+}
+
+.input-box {
+  display: grid;
+  height: 30px;
+}
+
+.actions {
+  padding: 15px;
+  border: none;
 }
