@@ -1,4 +1,5 @@
 <section>
+  <%= render partial: 'shared/signout' %>
   <h1 class="users-title">Add a new post</h1>
   <%= form_with model: @post, url: user_posts_path, class: "card left" do |form| %>
     <%= form.label :title %> <br>
