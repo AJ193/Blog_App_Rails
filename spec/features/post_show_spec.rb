@@ -6,8 +6,8 @@ RSpec.feature 'Post show page', type: :feature do
 
   before do
     # Create comments and likes for the post
-    FactoryBot.create_list(:comment, 3, post: post)
-    FactoryBot.create_list(:like, 2, post: post)
+    FactoryBot.create_list(:comment, 3, post:)
+    FactoryBot.create_list(:like, 2, post:)
     visit user_post_path(user, post)
   end
 
