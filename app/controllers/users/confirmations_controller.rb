@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Users::ConfirmationsController < Devise::ConfirmationsController
   # GET /resource/confirmation/new
   # def new
@@ -12,10 +10,10 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   # end
 
   # GET /resource/confirmation?confirmation_token=abcdef
-   def show
-    puts "anything"
-     super
- end
+  def show
+    puts 'anything'
+    super
+  end
 
   # protected
 
